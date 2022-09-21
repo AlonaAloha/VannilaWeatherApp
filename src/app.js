@@ -1,10 +1,10 @@
-
+function formatDate(timestamp) {
   let date = new Date(timestamp);
-  let hours = timestamp.getHours();
+  let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
   }
-  let minutes = timestamp.getMinutes();
+  let minutes = date.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
@@ -19,7 +19,7 @@
   ];
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
-
+  }
 function displayWeather(response) {
   console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
@@ -37,6 +37,7 @@ function displayWeather(response) {
 }
 
 let apiKey ="854d931b03dfa3d9b694dd7d5ecb6684";
+
 let apiUrl =`https://api.openweathermap.org/data/2.5/weather?
 q=New York&appid=${apiKey}&units=metrics`;
 
