@@ -1,28 +1,27 @@
-function formatDate(timestamp) {
+
   let date = new Date(timestamp);
-  let hours = date.getHours();
+  let hours = timestamp.getHours();
   if (hours < 10) {
-    hours = `0&{hours}`;
+    hours = `0${hours}`;
   }
-  let minutes = date.getMinutes();
+  let minutes = timestamp.getMinutes();
   if (minutes < 10) {
-    minutes = `0&{minutes}`;
+    minutes = `0${minutes}`;
   }
   let days = [
     "Sunday",
-     "Monday",
-     "Tuesday",
-     "Wednesday",
-     "Thursday",
-     "Friday",
-     "Saturday"
-    ];
-  let day = days[getDay()];
-  return `&{day} &{hours}:&{minutes}`;
-}
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
 
-function displayTemperature(response) {
-  console.log(response.data.main.temp);
+function displayWeather(response) {
+  console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
@@ -41,4 +40,4 @@ let apiKey ="854d931b03dfa3d9b694dd7d5ecb6684";
 let apiUrl =`https://api.openweathermap.org/data/2.5/weather?
 q=New York&appid=${apiKey}&units=metrics`;
 
-axios.get(apiUrl).then(displayTemperature);
+axios.get(apiUrl).then(displayWeather);
