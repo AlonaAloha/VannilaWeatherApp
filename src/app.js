@@ -20,7 +20,7 @@ function formatDate(timestamp) {
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
   }
-function displayWeather(response) {
+function displayTemperature(response) {
   
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -32,7 +32,7 @@ function displayWeather(response) {
   
 celsiusTemperature = response.data.main.temp;
 
-  temperatureElement.innerHTML = Math.round(response.celsiusTemperature);
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
@@ -46,7 +46,7 @@ function search(city) {
 let apiKey ="854d931b03dfa3d9b694dd7d5ecb6684";
 let apiUrl =`https://api.openweathermap.org/data/2.5/weather?
 q=${city}&appid=${apiKey}&units=metric`;
-axios.get(apiUrl).then(displayWeather);
+axios.get(apiUrl).then(displayTemperature);
 }
 
 function handleSubmit(event) {
@@ -57,19 +57,21 @@ function handleSubmit(event) {
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
-  let fahrengeitTemperature = (celsiusTemperature * 9) / 5 + 32;
+   let temperatureElement = document.querySelector("#temperature");
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
-  let temperatureElement = document.querySelector("#temperature");
+  
+  let fahrengeitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrengeitTemperature);
 
 }
 function displayCelsiusTemperature(event) {
   event.preventDefault();
-   celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
+  
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
+    celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
 }
 
 
