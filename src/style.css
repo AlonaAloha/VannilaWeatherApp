@@ -71,14 +71,16 @@ text-transform: capitalize;
 .weather-forecast {
   margin-top: 20px;
   text-align: center;
+  opacity: 0.;
 }
 .weather-forecast-date {
   font-size: 16px;
-  color:#48484A;
+  color:rgb(135, 135, 135);
 }
 .weather-forecast-temperature {
-  font-size: 13px;
+  font-size:13px;
 }
-.weather-forecast-temperature {
+.weather-forecast-temperature-min {
   color:#A2A39E ;
+  opacity: 0.8;
 }
