@@ -68,3 +68,17 @@ text-transform: capitalize;
 .weather-temperature.active:hover {
  text-decoration: none; 
 }
+.weather-forecast {
+  margin-top: 20px;
+  text-align: center;
+}
+.weather-forecast-date {
+  font-size: 16px;
+  color:#48484A;
+}
+.weather-forecast-temperature {
+  font-size: 13px;
+}
+.weather-forecast-temperature {
+  color:#A2A39E ;
+}
