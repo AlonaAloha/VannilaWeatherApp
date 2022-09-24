@@ -1,5 +1,6 @@
 body {
   font-family: arial,sans-serif;
+  
 }
 
 h1 {
@@ -37,6 +38,7 @@ text-transform: capitalize;
 .weather-app-wrapper {
  max-width:600px;
   margin: 30px auto;
+
 }
 
 .overview {

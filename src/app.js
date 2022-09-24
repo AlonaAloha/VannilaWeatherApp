@@ -42,8 +42,7 @@ function formatDate(timestamp) {
               <div class="weather-forecast-date">
                 ${formatDay(forecastDay.dt)}
               </div>
-              <img src="	http://openweathermap.org/img/wn/
-              ${forecastDay.weather[0].icon}@2x.png" alt="" width="42" />
+              <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" width="42" />
               <div class="weather-forecast-temperature">
                 <span class="weather-forecast-temperature-max">
                 ${Math.round(forecastDay.temp.max)}°</span>
@@ -59,11 +58,12 @@ function formatDate(timestamp) {
    
   }
 function getForecast(coordinates) {
-let apiKey ="854d931b03dfa3d9b694dd7d5ecb6684";
+let apiKey ="ff1d9ea9376b5c27a82e04fc2b2abdbb";
 let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?
 lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(displayForecast);
 }
+
 function displayTemperature(response) {
   
   let temperatureElement = document.querySelector("#temperature");
@@ -91,7 +91,7 @@ celsiusTemperature = response.data.main.temp;
 
 
 function search(city) {
-let apiKey ="854d931b03dfa3d9b694dd7d5ecb6684";
+let apiKey ="ff1d9ea9376b5c27a82e04fc2b2abdbb";
 let apiUrl =`https://api.openweathermap.org/data/2.5/weather?
 q=${city}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(displayTemperature);
@@ -108,18 +108,18 @@ function displayFahrenheitTemperature(event) {
    let temperatureElement = document.querySelector("#temperature");
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
-  
   let fahrengeitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrengeitTemperature);
 
 }
+
 function displayCelsiusTemperature(event) {
   event.preventDefault();
-  
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-    celsiusLink.classList.add("active");
+   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  
 }
 
 
